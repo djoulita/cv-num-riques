@@ -1,4 +1,3 @@
-/* script.js - Effet GLITCH pour le style Cyberpunk */
 
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a, .btn-action');
@@ -15,3 +14,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
