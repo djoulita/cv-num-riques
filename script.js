@@ -4,14 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     navLinks.forEach(link => {
         link.addEventListener('mouseenter', () => {
-            // Ajoute la classe 'glitch' au survol
-            link.classList.add('glitch');
             
-            // Supprime la classe après une courte période (simule un "glitch" rapide)
+            link.classList.add('glitch');
             setTimeout(() => {
                 link.classList.remove('glitch');
             }, 300); // 0.3 seconde
         });
     });
 });
+
 
