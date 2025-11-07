@@ -1,0 +1,208 @@
+/* style.css - THE CYBERPUNK THEME */
+
+/* Importation d'une police "Glitch" */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --color-primary: #00ffff; /* Cyan Néon */
+    --color-secondary: #ff00ff; /* Magenta Néon */
+    --color-background: #0a0a0a; /* Noir profond */
+    --color-text: #00ff73; /* Vert Néon pour le texte */
+    --shadow-neon: 0 0 5px var(--color-primary), 0 0 10px var(--color-primary);
+    --shadow-neon-mag: 0 0 5px var(--color-secondary), 0 0 10px var(--color-secondary);
+}
+
+body {
+    font-family: 'VT323', monospace; /* Police Rétro-Techno */
+    color: var(--color-text);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    /* Optimisation : Image d'arrière-plan (ville nocturne) */
+    background-image: url('assets/image1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-blend-mode: multiply; /* Assombrit l'image */
+}
+
+/* Conteneur principal (La fenêtre d'interface) */
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(0, 0, 0, 0.9); /* Arrière-plan semi-transparent */
+    border: 1px solid var(--color-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    border-radius: 4px;
+}
+
+/* Titres H1 et H2 */
+h1, h2 {
+    text-align: center;
+    color: var(--color-primary);
+    text-shadow: var(--shadow-neon);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+/* Navigation (style console) */
+nav {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: bold;
+    margin: 0 20px;
+    transition: color 0.3s, text-shadow 0.3s;
+    font-size: 1.1em;
+}
+nav a:hover {
+    color: var(--color-primary);
+    text-shadow: var(--shadow-neon);
+}
+
+/* Texte standard / paragraphes */
+p, ul, li {
+    font-size: 1em;
+    color: #00ff73;
+}
+
+/* Liens / Boutons (Action) */
+.btn-action {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+    text-decoration: none;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    text-transform: uppercase;
+    box-shadow: var(--shadow-neon-mag);
+}
+.btn-action:hover {
+    background-color: rgba(255, 0, 255, 0.2);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* Section de code / CV */
+.data-console {
+    border: 2px solid var(--color-primary);
+    padding: 20px;
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+.data-console h3 {
+    color: var(--color-secondary);
+    text-shadow: var(--shadow-neon-mag);
+    border-bottom: 1px dashed var(--color-secondary);
+    padding-bottom: 5px;
+}
+
+/* Effet Scanline (Optimisation visuelle avancée) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        rgba(0, 0, 0, 0.3) 1px,
+        transparent 2px
+    );
+    z-index: 9999;
+}/* Complément pour l'effet Glitch */
+.glitch {
+    position: relative;
+    /* Animation rapide du texte */
+    animation: glitch-anim 0.3s steps(2, end);
+    text-shadow: 0 0 5px var(--color-secondary);
+}
+
+.glitch::before, .glitch::after {
+    content: attr(title); /* Utilise le contenu du lien comme texte */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--color-primary);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim-before 0.3s steps(2, end);
+    color: var(--color-primary);
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--color-secondary);
+    clip: rect(85px, 450px, 100px, 0);
+    animation: glitch-anim-after 0.3s steps(2, end);
+    color: var(--color-secondary);
+}
+
+/* Animations (pour simuler la déformation rapide) */
+@keyframes glitch-anim {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+    100% { transform: translate(0); }
+}
+@keyframes glitch-anim-before {
+    0% { clip: rect(25px, 450px, 90px, 0); }
+    50% { clip: rect(10px, 450px, 40px, 0); }
+    100% { clip: rect(25px, 450px, 90px, 0); }
+}
+@keyframes glitch-anim-after {
+    0% { clip: rect(100px, 450px, 150px, 0); }
+    50% { clip: rect(120px, 450px, 160px, 0); }
+    100% { clip: rect(100px, 450px, 150px, 0); }
+}
+/* AJOUT POUR LISIBILITÉ DU TEXTE DE DONNÉES DANS LES CONSOLES */
+
+/* Style des paragraphes dans la console pour une meilleure lisibilité */
+.data-console p {
+    font-size: 1.1em; /* Légèrement plus grand que le texte de base */
+    margin: 5px 0; /* Espacement plus serré pour l'effet "log" */
+    color: #00ff73; /* Vert Néon vif pour les données importantes */
+}
+
+/* Style des listes (pour l'effet d'énumération de fichiers/logs) */
+.list-data {
+    list-style: none; /* Enlève les points ou chiffres par défaut */
+    padding-left: 10px;
+    margin-top: 15px;
+}
+
+.list-data li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: var(--color-primary); /* Cyan pour les entrées de liste */
+    border-left: 2px solid var(--color-secondary); /* Une petite barre pour l'effet */
+    padding-left: 10px;
+}
+
+.list-data li strong {
+    color: var(--color-secondary); /* Mettez en évidence les mots clés en Magenta */
+}
+
+/* Assurez-vous que les citations ne gâchent pas le style */
+.list-data li [cite] {
+    font-size: 0.8em;
+    color: rgba(255, 255, 255, 0.5); /* Citations en gris clair pour les rendre discrètes */
+    margin-left: 5px;
+}
